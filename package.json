@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "https-preview": "serve dist",
     "prepare": "husky install"
@@ -27,7 +27,11 @@
     "@mui/material": "^5.10.6",
     "@mui/system": "^5.10.6",
     "@mui/utils": "^5.10.6",
+    "@spryker-oryx/presets": "latest",
+    "@spryker-oryx/labs": "latest",
+    "@spryker-oryx/themes": "latest",
     "is-mobile": "^3.1.1",
+    "mockdate": "^3.0.5",
     "notistack": "^2.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

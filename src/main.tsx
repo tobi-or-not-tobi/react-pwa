@@ -17,3 +17,12 @@ welcome();
 
 // ts(1208)
 export {};
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      [name: string]: unknown;
+    }
+  }
+}

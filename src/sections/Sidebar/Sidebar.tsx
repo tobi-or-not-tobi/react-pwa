@@ -28,7 +28,11 @@ function Sidebar() {
           .filter((route) => route.title)
           .map(({ path, title, icon: Icon }) => (
             <ListItem sx={{ p: 0 }} key={path}>
-              <ListItemButton component={Link} to={path as string} onClick={sidebarActions.close}>
+              <ListItemButton
+                component={Link}
+                to={path?.endsWith('*') ? path.slice(0, -1) : (path as string)}
+                onClick={sidebarActions.close}
+              >
                 <ListItemIcon>{Icon ? <Icon /> : <DefaultIcon />}</ListItemIcon>
                 <ListItemText>{title}</ListItemText>
               </ListItemButton>

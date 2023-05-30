@@ -1,4 +1,42 @@
 import welcome from '@/utils/welcome';
+import { appBuilder } from '@spryker-oryx/application';
+import { ExperienceStaticData, colorPalette } from '@spryker-oryx/experience';
+import { labsFeatures } from '@spryker-oryx/labs';
+import { storefrontFeatures } from '@spryker-oryx/presets';
+import { BASE_ROUTE } from '@spryker-oryx/router';
+import { storefrontTheme } from '@spryker-oryx/themes';
+import { productAvailabilityComponent } from './components/availability/availability.def';
+
+appBuilder()
+  .withFeature(storefrontFeatures)
+  .withFeature(labsFeatures)
+  .withFeature({ providers: [{ provide: BASE_ROUTE, useValue: '/page-3' }] })
+  .withFeature({
+    providers: [
+      {
+        provide: ExperienceStaticData,
+        useValue: [
+          { id: 'header', type: 'Page' },
+          { id: 'footer', type: 'Page' },
+        ],
+      },
+    ],
+  })
+  .withFeature({ components: [productAvailabilityComponent] })
+  .withTheme(storefrontTheme)
+  .withTheme({
+    designTokens: [
+      {
+        color: {
+          primary: colorPalette.colors.sky,
+          secondary: colorPalette.colors.crimson,
+        },
+      },
+    ],
+  })
+  .withAppOptions({ components: { root: 'body' } })
+  .withEnvironment(import.meta.env)
+  .create();
 
 // Root contains the main dependencies and providers of the base app
 //  - React, ReactDom, RecoilRoot, HelmetProvider, ThemeProvider, MUI-core)

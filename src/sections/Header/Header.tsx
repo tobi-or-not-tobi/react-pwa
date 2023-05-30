@@ -65,6 +65,7 @@ function Header() {
             <Button onClick={showNotification} color="info">
               {title}
             </Button>
+            <oryx-search-box></oryx-search-box>
           </FlexBox>
           <FlexBox>
             <FlexBox>
@@ -79,6 +80,7 @@ function Header() {
                 </HotKeysButton>
               </Tooltip>
             </FlexBox>
+            <oryx-site-navigation-item uid="mini-cart"></oryx-site-navigation-item>
             <Divider orientation="vertical" flexItem />
             <Tooltip title="It's open source" arrow>
               <IconButton color="info" size="large" component="a" href={repository} target="_blank">
@@ -86,6 +88,13 @@ function Header() {
               </IconButton>
             </Tooltip>
             <Divider orientation="vertical" flexItem />
+            <FlexBox sx={{ alignItems: 'center' }}>
+              <oryx-color-mode-selector
+                onClick={() => {
+                  themeActions.toggle();
+                }}
+              ></oryx-color-mode-selector>
+            </FlexBox>
             <Tooltip title="Switch theme" arrow>
               <IconButton color="info" edge="end" size="large" onClick={themeActions.toggle}>
                 <ThemeIcon />
